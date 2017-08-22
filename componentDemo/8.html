@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>异步组件</title>
+	<script src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<child-component></child-component>
+	</div>
+	<script>
+		Vue.component('child-component',function(resolve,reject){
+			window.setTimeout(function(){
+				resolve({
+					data(){
+						return{
+							msg:'来自异步的内容'
+						}
+					},
+					template:'<div>{{msg}}</div>'
+				})
+			},2000)
+		});
+		new Vue({
+			el:'#app',
+			created(){
+				
+			}
+		})
+	</script>
+</body>
+</html>

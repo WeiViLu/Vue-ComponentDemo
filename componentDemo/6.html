@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>slot分发</title>
+	<script src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<app>
+			<div slot="a">
+				{{message}}
+			</div>
+			<div slot="b">
+				你好，世界！
+			</div>
+		</app>
+	</div>
+	<script>
+		Vue.component('app',{
+			template:'\
+			<div>\
+				Hello\
+				<slot name="a"></slot>\
+				<slot name="b"></slot>\
+			</div>\
+			'
+		});
+
+		new Vue({
+			el:'#app',
+			data:{
+				message:'world'
+			},
+			mounted(){
+				this.$slot.a
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>全局组件注册以及is属性</title>
+	<script src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<table>
+			<tbody is="my-component"></tbody>
+		</table>
+	</div>
+	<script>
+		Vue.component('my-component',{
+			template:'<div>Table</div>'
+		});
+		new Vue({
+			el:'#app'
+		})
+	</script>
+</body>
+</html>

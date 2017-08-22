@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>手动挂载</title>
+	<script src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		
+	</div>
+	<script>
+		const myComponent=Vue.extend({
+			template:'<div>from extend</div>'
+		});
+		new myComponent().$mount('#app');
+	</script>
+</body>
+</html>

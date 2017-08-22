@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>递归组件</title>
+	<script src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<com-a :count="1"><com-a>
+	</div>
+	<script>
+		Vue.component('com-a',{
+			name:'comA',
+			props:{
+				count:{
+					type:Number,
+					default:1
+				}
+			},
+			template:'<div><com-a :count="count + 1" v-if="count < 3"></com-a>{{count}}</div>'
+		});
+		new Vue({
+			el:'#app'
+		})
+	</script>
+</body>
+</html>

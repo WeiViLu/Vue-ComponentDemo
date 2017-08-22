@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>双向绑定组件通信</title>
+	<script src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<my-com v-model="value"></my-com>
+		{{value}}<button @click="handleReduce">-1</button>
+	</div>
+	<script>
+		Vue.component('my-com',{
+			props:{
+				value:{
+					type:Number
+				}
+			},
+			template:'<div>{{currentvalue}}<button @click="handleClick">+1</button></div>',
+			data(){
+				return{
+					currentvalue:this.value
+				}
+			},
+			watch:{
+				value(val){
+					this.currentvalue=val;
+				}
+			},
+			methods:{
+				handleClick(){
+					this.currentvalue++;
+					this.$emit('input',this.currentvalue);
+				}
+			}
+		});
+		new Vue({
+			el:'#app',
+			data:{
+				value:1
+			},
+			methods:{
+				handleReduce(){
+					this.value--;
+				}
+			}
+		})
+	</script>
+</body>
+</html>
